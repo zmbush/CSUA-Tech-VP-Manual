@@ -3,15 +3,72 @@
 % Last Change: Tue May 01 07:00 PM 2012 P
 %
 \documentclass[letterpaper]{book}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0},
+}
 \title{CSUA Technical VP Manual}
 \author{Zachary Bush}
 \begin{document}
 \maketitle
 \tableofcontents
 \chapter{Maintenance}
+\section{Passwords}
+To access the password file, open the file:
+\begin{verbatim}
+/csua/staff/politburo/passwords
+\end{verbatim}
+as root. 
+
 \section{Updating Politburo Position Emails}
+The email forwarding for the politburo positions are managed through google
+apps. To get to the website to manage them, go to
+\url{http://www.google.com/a/csua.org}, and log in with the credentials found
+under ``Mailman/Google Apps for csua.org'' in the passwords file.
+
+Then click on ``Groups''. 
+
+The positions and their main email (where you change the forwarding) are as follows:
+\begin{enumerate}
+\item President: president@csua.org
+\item VP Indrel: indrel@csua.org
+\item VP Tech: vice-president@csua.org
+\item Outreach: outreach@csua.org
+\item External Events: externalevents@csua.org
+\item Internal Events: internalevents@csua.org
+\end{enumerate}
+
+When you are changing over to the new positions, add the new people to their
+respective groups, but keep the old officer there until the end of the semester
+when the role officially switches.
+
 \section{Adding new member}
-\section{Mailing Lists}
+As root, run the following script:
+\begin{verbatim}
+/csua/adm/bin/adduser
+\end{verbatim}
+The script is written in python, so feel free to take a look through it. 
+
+\section{Manage Mailing Lists}
+In order to manage the mailing lists, you'll need to fetch the password under
+the heading: ``Mailman/Google Apps for csua.org'', and visit: 
+\url{http://mail.csua.berkeley.edu:8080/mailman}.
+
+Click on the link titled ``the list admin overview page'', and you will be able
+to manage any of the lists by clicking on them. You will then be prompted for
+the password.
+
+\section{Add User to Root}
+Get password for ldap from:
+\begin{verbatim}
+/etc/pam_ldap.secret
+\end{verbatim}
+Then run the following commands:
+\begin{verbatim}
+ssh ldap
+\end{verbatim}
+
 \end{document}
 
 
